@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Flight } from '../entities/flight';
+import { Flight } from '../model/flight';
 import { HttpClient } from '@angular/common/http';
 import { filter, map } from 'rxjs';
 
