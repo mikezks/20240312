@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">
+      Flight Search
+    </h2>
+  </div>
+
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label>From:</label>
+        <input ngModel (ngModelChange)="from = $event" name="from" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>To:</label>
+        <input [(ngModel)]="to" name="to" class="form-control">
+      </div>
+      <div class="form-group">
+        <button (click)="search()" class="btn btn-default">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
