@@ -5,6 +5,8 @@ import { Flight } from '../model/flight';
 import { HttpClient } from '@angular/common/http';
 import { filter, map } from 'rxjs';
 import { FlightService } from './flight.service';
+import { DefaultFlightService } from './default-flight.service';
+import { DummyFlightService } from './dummy-flight.service';
 
 
 @Component({
@@ -13,6 +15,12 @@ import { FlightService } from './flight.service';
   imports: [
     CommonModule,
     FormsModule
+  ],
+  providers: [
+    /* {
+      provide: FlightService,
+      useClass: DummyFlightService
+    } */
   ],
   templateUrl: './flight-search.component.html',
   styleUrl: './flight-search.component.scss'
