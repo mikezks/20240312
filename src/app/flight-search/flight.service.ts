@@ -4,7 +4,7 @@ import { Flight } from '../model/flight';
 import { DefaultFlightService } from './default-flight.service';
 import { DummyFlightService } from './dummy-flight.service';
 
-let config: 'default' | 'dummy' = 'dummy';
+let config: 'default' | 'dummy' = 'default';
 
 @Injectable({
   providedIn: 'root',

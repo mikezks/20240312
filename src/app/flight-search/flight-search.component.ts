@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Flight } from '../model/flight';
 import { FlightService } from './flight.service';
+import { FlightCardComponent } from '../flight-card/flight-card.component';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { FlightService } from './flight.service';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FlightCardComponent
   ],
   templateUrl: './flight-search.component.html',
   styleUrl: './flight-search.component.scss'
@@ -22,6 +24,10 @@ export class FlightSearchComponent {
   to = 'Graz'
   flights: Flight[] = [];
   selectedFlight: Flight | undefined;
+  basket: Record<number, boolean> = {
+    3: true,
+    5: true
+  };
 
   protected search(): void {
     this.flightService.find(this.from, this.to)
