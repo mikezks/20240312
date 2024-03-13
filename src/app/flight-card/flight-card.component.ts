@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { initialFlight } from '../model/flight';
+import { Component, Input, computed, effect, input, signal } from '@angular/core';
+import { Flight, initialFlight } from '../model/flight';
 import { DatePipe, NgClass, NgStyle } from '@angular/common';
 
 @Component({
@@ -12,10 +12,22 @@ import { DatePipe, NgClass, NgStyle } from '@angular/common';
   styleUrl: './flight-card.component.scss'
 })
 export class FlightCardComponent {
-  @Input() item = initialFlight;
-  @Input() selected = false;
+  item = input.required<Flight>();
+  selected = input(false);
+  protected selectedState = signal(false);
+  protected flightWithSelection = computed(
+    () => ({ ...this.item(), selected: this.selectedState() })
+  );
+
+  constructor() {
+    effect(() => this.selectedState.set(this.selected()), {
+      allowSignalWrites: true
+    });
+
+    effect(() => console.log(this.flightWithSelection()));
+  }
 
   toggleSelection(): void {
-    this.selected = !this.selected;
+    this.selectedState.update(selected => !selected);
   }
 }
