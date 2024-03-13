@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{ selected: selectedState() }">
+<div class="card" [ngClass]="{ selected: selected() }">
   <div class="card-header">
     <h2 class="card-title">
       {{ item().from }} - {{ item().to }}
@@ -11,7 +11,7 @@
     <p [ngStyle]="{ color: item().delayed }">Delayed: {{  item().delayed }}</p>
     <p>
       <button (click)="toggleSelection()" class="btn  btn-default">
-        {{ selectedState() ? "Remove" : "Select" }}
+        {{ selected() ? "Remove" : "Select" }}
       </button>
     </p>
   </div>
